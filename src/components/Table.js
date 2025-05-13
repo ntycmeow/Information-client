@@ -9,6 +9,9 @@ const Table = ({ users, fetchUsers }) => {
     phone: ''
   });
 
+  const [modalData, setModalData] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
   const handleEdit = (user) => {
     setEditingUser(user.id);
     setUserData({
@@ -36,6 +39,25 @@ const Table = ({ users, fetchUsers }) => {
     } catch (error) {
       console.error('Error deleting user:', error);
     }
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    return date.toLocaleString('en-GB', options);
+  };
+
+  const handleView = (user) => {
+    setModalData({
+      ...user,
+      created_at: formatDate(user.created_at) // แปลงเวลา
+    });
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setModalData(null);
   };
 
 
@@ -94,6 +116,7 @@ const Table = ({ users, fetchUsers }) => {
                   <>
                     <button className="edit" onClick={() => handleEdit(user)}>Edit</button>
                     <button className="delete" onClick={() => handleDelete(user.id)}>Delete</button>
+                    <button className="view" onClick={() => handleView(user)}>View</button>
                   </>
                 )}
               </td>
@@ -101,6 +124,19 @@ const Table = ({ users, fetchUsers }) => {
           ))}
         </tbody>
       </table>
+      
+      {showModal && modalData && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close-btn" onClick={closeModal}>x</span>
+            <h2>User Details</h2>
+            <p><strong>Name:</strong> {modalData.name}</p>
+            <p><strong>Email:</strong> {modalData.email}</p>
+            <p><strong>Phone:</strong> {modalData.phone}</p>
+            <p><strong>Created At:</strong> {modalData.created_at}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
