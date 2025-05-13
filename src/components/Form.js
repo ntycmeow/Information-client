@@ -9,7 +9,7 @@ const Form = ({ fetchUsers }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = { name, email, phone };
-    await axios.post('http://localhost:3000/api/users', user);
+    await axios.post('http://localhost:5000/api/users', user);
     fetchUsers(); 
     setName('');
     setEmail('');
