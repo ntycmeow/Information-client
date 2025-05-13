@@ -1,38 +1,138 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  margin: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
   color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.form-container button:hover {
+  background-color: #45a049;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.table-container {
+  width: 80%;
+  max-width: 1000px;
+  margin-top: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+/* desktop */
+@media (min-width: 1201px) {
+  .form-container {
+    width: 50%;
+    max-width: 60%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .table-container {
+    width: 70%;
+  }
+
+  table {
+    font-size: 18px;
+  }
+}
+
+/* macbook */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .form-container {
+    width: 60%;
+    max-width: 70%;
+  }
+
+  .table-container {
+    width: 80%;
+  }
+
+  table {
+    font-size: 16px;
+  }
+}
+
+/* tablet */
+@media (min-width: 601px) and (max-width: 900px) {
+  .form-container {
+    width: 80%;
+    max-width: 90%;
+  }
+
+  .table-container {
+    width: 90%;
+  }
+
+  table {
+    font-size: 14px;
+  }
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  .form-container {
+    width: 90%;
+    max-width: 100%;
+  }
+
+  .form-container input, .form-container button {
+    padding: 8px;
+  }
+
+  .table-container {
+    width: 100%;
+    margin-top: 20px;
+
+  }
+
+  table {
+    font-size: 12px;
   }
 }
